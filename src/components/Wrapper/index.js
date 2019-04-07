@@ -10,6 +10,14 @@ const { Header, Content, Sider } = Layout;
 export default class Wrapper extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      collapsed: false,
+    }
+  }
+
+  onCollapse = (collapsed) => {
+    console.log(collapsed);
+    this.setState({ collapsed });
   }
 
   render() {
@@ -29,18 +37,24 @@ export default class Wrapper extends Component {
             </Menu>
           </Header>
           <Layout>
-            <Sider width={200} style={{ background: '#fff' }}>
+            <Sider 
+              collapsible
+              collapsed={this.state.collapsed}
+              onCollapse={this.onCollapse}>
               <Menu
                 mode="inline"
+                theme="dark"
                 defaultSelectedKeys={['1']}
                 defaultOpenKeys={['sub1']}
                 style={{ height: '100%', borderRight: 0 }}
               >
-                <SubMenu key="sub1" title={<span><Icon type="laptop" />营销中心</span>}>
-                  <Menu.Item key="2">推广活动</Menu.Item>
+                <SubMenu key="sub1" title={<span><Icon type="laptop" /><span>营销中心</span></span>}>
+                  <Menu.Item key="1">推广活动</Menu.Item>
                 </SubMenu>
               </Menu>
             </Sider>
+
+
             <Layout style={{ padding: '0 24px 24px' }}>
               <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>营销中心</Breadcrumb.Item>
