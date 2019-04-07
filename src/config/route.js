@@ -2,6 +2,7 @@ import React from 'react';
 import { useScroll } from 'react-router-scroll';
 import App from '@/containers/App';
 import NewActivity from '@/containers/NewActivity';
+import ActivityList from '@/containers/ActivityList';
 // Router
 const Router = process.env.NODE_ENV !== 'production'
   ? require('react-router').Router : window.ReactRouter && window.ReactRouter.Router;
@@ -20,7 +21,8 @@ const config = [
       component: NewActivity
     },
     childRoutes: [
-      { path: '/new', name: 'new', component: NewActivity }
+      { path: '/new', name: 'new', component: NewActivity },
+      { path: '/list', name: 'list', component: ActivityList }
     ]
   }
 ];

@@ -2,6 +2,8 @@ import React from 'react'; // from CDN
 import ReactDOM from 'react-dom'; // from CDN
 import route from '@/config/route';
 import configureStore from '@/config/store';
+import { LocaleProvider } from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
 
 import '@/css/resets.less';
 
@@ -18,6 +20,6 @@ const store = configureStore();
 // 添加Global订阅事件
 // store.subscribe(() => {});
 ReactDOM.render(
-  <Provider store={store}>{route}</Provider>,
+  <LocaleProvider locale={zh_CN}><Provider store={store}>{route}</Provider></LocaleProvider>,
   document.getElementById('app')
 );
