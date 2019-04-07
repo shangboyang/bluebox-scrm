@@ -4,11 +4,12 @@ import Wrapper from '@/components/Wrapper'
 import {
   Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, Radio
 } from 'antd';
+import { Steps } from 'antd';
 import { DatePicker } from 'antd';
-
+import AddTag from './components/AddTag'
 import './style.less'
 const { TextArea } = Input;
-
+const Step = Steps.Step;
 const { RangePicker } = DatePicker;
 const RadioGroup = Radio.Group;
 
@@ -88,7 +89,9 @@ class NewActivity extends Component {
       activityName: 1,
       activityCard: 1,
       tagShow: false,
+      tagCardShow: false,
     };
+    this.addTagHandler = this.addTagHandler.bind(this)
   }
 
   onCheckChange = (e) => {
@@ -156,6 +159,12 @@ class NewActivity extends Component {
     this.setState({ autoCompleteResult });
   }
 
+  addTagHandler(flag) {
+    console.log(this.state.tagCardShow)
+    this.setState({
+      tagCardShow: !flag || !this.state.tagCardShow
+    })
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -200,11 +209,10 @@ class NewActivity extends Component {
     return (
       <div>
         <Wrapper>
-            <div className={"nav-bar"}>
-              <div className="bar"><span>1</span><span>活动内容</span></div>
-              <div></div>
-              <div className="bar"><span>2</span><span>报名模板</span></div>
-            </div>
+          <Steps className="nav-steps" size="small" current={0}>
+            <Step title="活动内容" />
+            <Step title="报名模板" />
+          </Steps>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
               <div className={"form-basic"}>
                 <h3>基本信息</h3>
@@ -237,7 +245,7 @@ class NewActivity extends Component {
                         onChange={onChange}
                         onOk={onOk}
                       />
-                      <div>活动结束后，用户再点击页面上的报名会提示活动已结束</div>
+                      <div className="tip">活动结束后，用户再点击页面上的报名会提示活动已结束</div>
                     </div>
                     
                   )}
@@ -268,10 +276,11 @@ class NewActivity extends Component {
                 >
                   <Checkbox onChange={this.onCheckChange}>给参与活动客户打标签</Checkbox>
                   <div className={!this.state.tagShow ?　'form-acty-tag': ''}>
-                    <a href="javascript:void(0)">添加标签</a>
-                    <div>
-                      添加标签
-                    </div>
+                    <a onClick={this.addTagHandler}>添加标签</a>
+                    <AddTag 
+                      onCloseHandler={this.addTagHandler} 
+                      tagCardShow={this.state.tagCardShow}></AddTag>
+                    
                   </div>
                 </Form.Item>
                 
@@ -294,7 +303,7 @@ class NewActivity extends Component {
                         onChange={onChange}
                         onOk={onOk}
                       />
-                      <div>活动结束后，用户再点击页面上的报名会提示活动已结束</div>
+                      <div className="tip">活动结束后，用户再点击页面上的报名会提示活动已结束</div>
                     </div>
                     
                   )}
@@ -338,6 +347,13 @@ class NewActivity extends Component {
 }
 
 export default Form.create({ name: 'register' })(NewActivity);
+
+
+// <div className={"nav-bar"}>
+//               <div className="bar"><span>1</span><span>活动内容</span></div>
+//               <div className="line"></div>
+//               <div className="bar"><span>2</span><span>报名模板</span></div>
+//             </div>
 
 /**
  * <Form.Item
