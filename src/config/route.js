@@ -3,6 +3,8 @@ import { useScroll } from 'react-router-scroll';
 import App from '@/containers/App';
 import NewActivity from '@/containers/NewActivity';
 import ActivityList from '@/containers/ActivityList';
+import NewTemplate from '@/containers/NewTemplate';
+
 // Router
 const Router = process.env.NODE_ENV !== 'production'
   ? require('react-router').Router : window.ReactRouter && window.ReactRouter.Router;
@@ -18,11 +20,12 @@ const config = [
     path: '/',
     component: App,
     indexRoute: {
-      component: NewActivity
+      component: ActivityList
     },
     childRoutes: [
       { path: '/new', name: 'new', component: NewActivity },
-      { path: '/list', name: 'list', component: ActivityList }
+      { path: '/list', name: 'list', component: ActivityList },
+      { path: '/temp', name: 'temp', component: NewTemplate }
     ]
   }
 ];

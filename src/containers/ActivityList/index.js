@@ -77,6 +77,7 @@ class ActivityList extends Component {
   }
 
   render() {
+    const self = this;
     const formItemLayout = {
       layout: 'inline',
       wrapperCol: {
@@ -86,7 +87,8 @@ class ActivityList extends Component {
       },
       labelAlign: 'right',
       style: {
-        margin: '15px 0',
+        margin: '15px 0 30px 0',
+        fontSize: '12px',
         paddingLeft: '30px'
       }
     }
@@ -108,18 +110,24 @@ class ActivityList extends Component {
 
     let paginationParams = {
       showSizeChanger: true,
-      defaultCurrent: 5,
-      total: tableData.length
+      defaultCurrent: 1,
+      total: tableData.length,
+      size: "small"
     }
-    
+    // console.log()
     return (
       <div>
-        <Wrapper>
+        <Wrapper 
+          router={self.props.router} navs={["营销中心", "推广活动"]}
+          >
             <div className="activity-entrance">
               <div className="entrance-item">
                 <div className="tpl-title">线下会议</div>
                 <p className="tpl-desc">例：线下面对面的产品介绍会</p>
-                <Button type="primary" style={{width: '145px', fontSize: '12px', lineHeight: '32px'}}>立即新建</Button>
+                <Button onClick={() => {
+                  console.log(self.props)
+                  self.props.router.push('/new')
+                }} type="primary" style={{width: '145px', fontSize: '12px', lineHeight: '32px'}}>立即新建</Button>
               </div>
               <div className="entrance-item">
                 <div className="tpl-title">在线直播</div>
@@ -128,7 +136,7 @@ class ActivityList extends Component {
               </div>
             </div>
             <div className="activity-management">活动管理</div>
-            <Form {...formItemLayout}>
+            <Form className="list-form" {...formItemLayout}>
               <Form.Item label={'活动名称'}>
                 <Input placeholder="请输入活动名称" style={{width: '144px'}}/>
               </Form.Item>
@@ -154,7 +162,7 @@ class ActivityList extends Component {
                 <div className="search-clear">清空筛选条件</div>
               </Form.Item>
             </Form>
-            <Table dataSource={tableData} style={{fontSize: '12px'}} pagination={paginationParams}>
+            <Table className="list-table" dataSource={tableData} style={{fontSize: '12px'}} pagination={paginationParams}>
               <Column title="活动ID" dataIndex="id" key="id" />
               <Column title="活动名称" dataIndex="name" key="name" />
               <Column title="活动类型" dataIndex="type" key="type"/>

@@ -31,12 +31,13 @@ export default class AddTag extends Component {
   onChange = (checkedList) => {
     this.setState({
       checkedList,
-      indeterminate: !!checkedList.length && (checkedList.length < plainOptions.length),
-      checkAll: checkedList.length === plainOptions.length,
+      indeterminate: !!checkedList.length && (checkedList.length < this.state.plainOptions.length),
+      checkAll: checkedList.length === this.state.plainOptions.length,
     });
   }
 
   onCheckAllChange = (e) => {
+    console.log(`sss >>> `, e.target.checked)
     this.setState({
       checkedList: e.target.checked ? this.state.plainOptions : [],
       indeterminate: false,
@@ -46,19 +47,20 @@ export default class AddTag extends Component {
 
   addTagHandler(e) {
     const searchTag = this.state.inputTag;
-    // console.log(`sss >>> `, this.state.plainOptions)
-    const arr = [] ;
-    for (let i = 0; i< this.state.plainOptions.length ;i++) {
-      arr.push(this.state.plainOptions[i]);
+    if (searchTag) {
+      const arr = [] ;
+      for (let i = 0; i< this.state.plainOptions.length ;i++) {
+        arr.push(this.state.plainOptions[i]);
+      }
+      arr.push(searchTag)
+      this.setState({
+        plainOptions: arr
+      });
     }
-    arr.push(searchTag)
-    this.setState({
-      plainOptions: arr
-    });
+    
   }
 
   refreshHandler(e) {
-    console.log(this.state.inputTag);
     this.setState({
       inputTag: ''
     })

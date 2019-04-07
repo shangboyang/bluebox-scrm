@@ -205,10 +205,11 @@ class NewActivity extends Component {
     const websiteOptions = autoCompleteResult.map(website => (
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
     ));
-
+    const self = this;
+    console.log(this);
     return (
       <div>
-        <Wrapper>
+        <Wrapper router={self.props.router} navs={["营销中心", "推广活动", "新建线下活动"]}>
           <Steps className="nav-steps" size="small" current={0}>
             <Step title="活动内容" />
             <Step title="报名模板" />
@@ -335,7 +336,9 @@ class NewActivity extends Component {
               </div>
             </Form>
             <div className={'form-submit'}>
-              <Button type="primary">下一步</Button>         
+              <Button onClick={() => {
+                self.props.router.push('temp')
+              }} type="primary">下一步</Button>         
               <Button>取消</Button>
             </div>
                     
