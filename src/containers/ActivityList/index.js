@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import Wrapper from '@/components/Wrapper'
 
 import {
-  Form, Input, Select, Button, Table
+  Form, Input, Select, Button, Table, Popconfirm
 } from 'antd';
 
 import './style.less'
 
 const { Option } = Select;
 const { Column } = Table;
+const { Search } = Input;
 
 let tableData = [
   {
@@ -76,6 +77,35 @@ class ActivityList extends Component {
     };
   }
 
+  renderPromotionCard = () => {
+    return <div className="pop-content">
+            <Search
+              placeholder="here is the website"
+              enterButton="复制"
+              size="large"
+              onSearch={value => console.log(value)}
+            />
+            <div className="promotion-info">
+              <img className="activity-img" src="" />
+              <div className="activety-info">
+                <div className="main-info">
+                  <div className="name">我是活动名称</div>
+                  <div className="time">活动时间为2019-1-16 10:00至2019-1-16 15:00</div>
+                </div>
+                <div className="QR-code"></div>
+              </div>
+            </div>
+            <div className="pop-bottom">
+              <div></div>
+              <div className="action-btn">下载推广图</div>
+            </div>
+          </div>
+  }
+
+  renderQRCodeCard = () => {
+
+  }
+
   render() {
     const self = this;
     const formItemLayout = {
@@ -114,7 +144,7 @@ class ActivityList extends Component {
       total: tableData.length,
       size: "small"
     }
-    // console.log()
+    
     return (
       <div>
         <Wrapper 
@@ -175,7 +205,19 @@ class ActivityList extends Component {
                   <span>
                    {/* {console.log(text, record, index)} */}
                    {
-                      record.actions.map((item, index) => <div className="table-action" key={index}>{item}</div>)
+                      record.actions.map((item, index) => <Popconfirm
+                                                            overlayClassName="action-pop-card"
+                                                            icon=''
+                                                            placement="left"
+                                                            arrowPointAtCenter={true}
+                                                            autoAdjustOverflow={true}
+                                                            title={this.renderPromotionCard()}
+                                                            // visible={true}
+                                                            key={index}
+                                                          >
+                                                            <div className="table-action">{item}</div>
+                                                          </Popconfirm>
+                      )
                     }
                   </span>
                 )}
