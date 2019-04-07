@@ -165,11 +165,11 @@ class NewActivity extends Component {
 
     const formItemLayout = {
       labelCol: {
-        xs: { span: 24, },
-        sm: { span: 3 }, // 左宽
+        xs: { span: 0, },
+        sm: { span: 2 }, // 左宽
       },
       wrapperCol: {
-        xs: { span: 24 },
+        xs: { span: 0 },
         sm: { span: 10 }, // 右宽
       },
     };
@@ -200,6 +200,11 @@ class NewActivity extends Component {
     return (
       <div>
         <Wrapper>
+            <div className={"nav-bar"}>
+              <div className="bar"><span>1</span><span>活动内容</span></div>
+              <div></div>
+              <div className="bar"><span>2</span><span>报名模板</span></div>
+            </div>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
               <div className={"form-basic"}>
                 <h3>基本信息</h3>
@@ -210,7 +215,7 @@ class NewActivity extends Component {
                     rules: [{
                       // type: 'email', message: 'The input is not valid E-mail!',
                     }, {
-                      required: true, message: 'Please input your E-mail!',
+                      required: true, message: '请输入活动名称！',
                     }],
                   })(
                     <Input placeholder="请输入活动名称，最多20个字"/>
@@ -221,7 +226,7 @@ class NewActivity extends Component {
                 >
                   {getFieldDecorator('time', {
                     rules: [{
-                      required: true, message: 'Please input your E-mail!',
+                      required: true, message: '请选择活动时间！',
                     }],
                   })(
                     <div>
@@ -242,15 +247,12 @@ class NewActivity extends Component {
                 >
                   {getFieldDecorator('intro', {
                     rules: [{
-                      required: true, message: 'Please input your E-mail!',
+                      required: true, message: '请输入活动介绍！',
                     }],
                   })(
-                    <TextArea placeholder="仅限内部查看，最多200个字" rows={4}></TextArea>
+                    <TextArea size="small" placeholder="仅限内部查看，最多200个字" rows={4}></TextArea>
                   )}
                 </Form.Item>
-              </div>
-              <div className={"form-acty"}>
-                <h3>活动信息</h3>
                 <Form.Item
                   label="活动分类"
                 >
@@ -260,7 +262,6 @@ class NewActivity extends Component {
                   <a className="form-link" href="javascript:void(0)">刷新</a>
                   <div className={'tip'}>不选分类则默认进入未分类</div>
                 </div>
-                  
                 </Form.Item>
                 <Form.Item
                   label="同步打标签"
@@ -273,28 +274,47 @@ class NewActivity extends Component {
                     </div>
                   </div>
                 </Form.Item>
+                
+              </div>
+              <div className={"form-acty"}>
+                <h3>活动规则</h3>
                 <Form.Item
-                  label="活动报名"
+                  label="报名时间"
+                >
+                  {getFieldDecorator('time', {
+                    rules: [{
+                      required: true, message: '请输入活动规则！',
+                    }],
+                  })(
+                    <div>
+                      <RangePicker
+                        showTime={{ format: 'HH:mm' }}
+                        format="YYYY-MM-DD HH:mm"
+                        placeholder={['开始时间', '结束时间']}
+                        onChange={onChange}
+                        onOk={onOk}
+                      />
+                      <div>活动结束后，用户再点击页面上的报名会提示活动已结束</div>
+                    </div>
+                    
+                  )}
+                </Form.Item>
+                <Form.Item
+                  label="活动报名审核"
                 >
                   {getFieldDecorator('activityName', {
-                    rules: [{
-                      required: true, message: 'Please input your E-mail!',
-                    }],
                     initialValue: this.state.activityName
                   })(
                     <RadioGroup onChange={this.onActivityNameChange} >
-                      <Radio value={1}>需要报名</Radio>
-                      <Radio value={0}>不需要报名</Radio>
+                      <Radio value={1}>需要审核</Radio>
+                      <Radio value={0}>不需要审核</Radio>
                     </RadioGroup>
                   )}
                 </Form.Item>
                 <Form.Item
-                  label="活动二维码"
+                  label="签到二维码"
                 >
                   {getFieldDecorator('activityCard', {
-                    rules: [{
-                      required: true, message: 'Please input your E-mail!',
-                    }],
                     initialValue: this.state.activityCard
                   })(
                     <RadioGroup onChange={this.onActivityCardChange}>
@@ -306,9 +326,8 @@ class NewActivity extends Component {
               </div>
             </Form>
             <div className={'form-submit'}>
-              <Button type="primary">提交</Button>         
-              <Button>保存</Button>
-              <a href="javascript:void(0)">取消</a>
+              <Button type="primary">下一步</Button>         
+              <Button>取消</Button>
             </div>
                     
           
