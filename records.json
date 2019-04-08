@@ -19,7 +19,7 @@
         "byName": {},
         "bySource": {},
         "usedIds": [
-          1
+          0
         ]
       }
     }
@@ -1147,7 +1147,33 @@
       "node_modules/antd/node_modules/rc-tooltip/es/index.js 1f8fcc8240b683a31151f88e8075ef22": 1003,
       "node_modules/antd/node_modules/rc-table/es/index.js 53d96736b6357a10e7745ecd3fb88781": 1004,
       "node_modules/rc-pagination/es/index.js 886a5fa0ca48bee2f76e41ff877ad80c": 1005,
-      "node_modules/antd/node_modules/rc-steps/es/index.js ce95719d4fa215b86154453d796f27f3": 1006
+      "node_modules/antd/node_modules/rc-steps/es/index.js ce95719d4fa215b86154453d796f27f3": 1006,
+      "node_modules/antd/node_modules/rc-tabs/lib/utils.js": 1007,
+      "node_modules/file-loader/dist/cjs.js!src/containers/ActivityList/images/qr.png": 1008,
+      "node_modules/antd/node_modules/rc-tabs/node_modules/raf/index.js": 1009,
+      "node_modules/antd/lib/tabs/index.js": 1010,
+      "node_modules/antd/lib/popconfirm/index.js": 1011,
+      "node_modules/file-loader/dist/cjs.js!src/containers/ActivityList/images/main.jpg": 1012,
+      "node_modules/antd/lib/popconfirm/style/css.js": 1013,
+      "node_modules/antd/lib/popover/style/css.js": 1014,
+      "node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/src/index.js!node_modules/less-loader/dist/cjs.js!node_modules/antd/lib/popover/style/index.css": 1015,
+      "node_modules/css-loader/index.js!node_modules/postcss-loader/src/index.js!node_modules/less-loader/dist/cjs.js!node_modules/antd/lib/popover/style/index.css": 1016,
+      "node_modules/antd/lib/tabs/style/css.js": 1017,
+      "node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/src/index.js!node_modules/less-loader/dist/cjs.js!node_modules/antd/lib/tabs/style/index.css": 1018,
+      "node_modules/css-loader/index.js!node_modules/postcss-loader/src/index.js!node_modules/less-loader/dist/cjs.js!node_modules/antd/lib/tabs/style/index.css": 1019,
+      "node_modules/antd/node_modules/rc-tabs/lib/TabContent.js": 1020,
+      "node_modules/antd/lib/tabs/TabBar.js": 1021,
+      "node_modules/antd/node_modules/rc-tabs/lib/ScrollableInkTabBar.js": 1022,
+      "node_modules/antd/node_modules/rc-tabs/lib/InkTabBarNode.js": 1023,
+      "node_modules/antd/node_modules/rc-tabs/lib/TabBarTabsNode.js": 1024,
+      "node_modules/antd/node_modules/rc-tabs/node_modules/warning/browser.js": 1025,
+      "node_modules/antd/node_modules/rc-tabs/lib/TabBarRootNode.js": 1026,
+      "node_modules/antd/node_modules/rc-tabs/lib/ScrollableTabBarNode.js": 1027,
+      "node_modules/antd/node_modules/rc-tabs/lib/SaveRef.js": 1028,
+      "node_modules/antd/lib/_util/styleChecker.js": 1029,
+      "node_modules/style-loader/index.js!node_modules/css-loader/index.js!node_modules/postcss-loader/src/index.js!node_modules/less-loader/dist/cjs.js!src/containers/NewTemplate/style.less": 1030,
+      "node_modules/css-loader/index.js!node_modules/postcss-loader/src/index.js!node_modules/less-loader/dist/cjs.js!src/containers/NewTemplate/style.less": 1031,
+      "node_modules/antd/node_modules/rc-tabs/es/index.js 60ccc54b27c663b7ae9a070954bfefc4": 1032
     },
     "usedIds": {
       "0": 0,
@@ -2156,7 +2182,33 @@
       "1003": 1003,
       "1004": 1004,
       "1005": 1005,
-      "1006": 1006
+      "1006": 1006,
+      "1007": 1007,
+      "1008": 1008,
+      "1009": 1009,
+      "1010": 1010,
+      "1011": 1011,
+      "1012": 1012,
+      "1013": 1013,
+      "1014": 1014,
+      "1015": 1015,
+      "1016": 1016,
+      "1017": 1017,
+      "1018": 1018,
+      "1019": 1019,
+      "1020": 1020,
+      "1021": 1021,
+      "1022": 1022,
+      "1023": 1023,
+      "1024": 1024,
+      "1025": 1025,
+      "1026": 1026,
+      "1027": 1027,
+      "1028": 1028,
+      "1029": 1029,
+      "1030": 1030,
+      "1031": 1031,
+      "1032": 1032
     }
   },
   "chunks": {
