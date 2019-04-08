@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Wrapper from '@/components/Wrapper'
+import IMG_QR from './images/qr.png'
+import IMG_MAIN from './images/main.jpg'
 
 import {
-  Form, Input, Select, Button, Table, Popconfirm
+  Form, Input, Select, Button, Table, Popconfirm, Tabs
 } from 'antd';
 
 import './style.less'
@@ -10,6 +12,7 @@ import './style.less'
 const { Option } = Select;
 const { Column } = Table;
 const { Search } = Input;
+const TabPane = Tabs.TabPane;
 
 let tableData = [
   {
@@ -82,17 +85,19 @@ class ActivityList extends Component {
             <Search
               placeholder="here is the website"
               enterButton="复制"
-              size="large"
+              size="small"
               onSearch={value => console.log(value)}
             />
             <div className="promotion-info">
-              <img className="activity-img" src="" />
+              <img className="activity-img" src={IMG_MAIN} />
               <div className="activety-info">
                 <div className="main-info">
                   <div className="name">我是活动名称</div>
                   <div className="time">活动时间为2019-1-16 10:00至2019-1-16 15:00</div>
                 </div>
-                <div className="QR-code"></div>
+                <div className="QR-code">
+                  <img src={IMG_QR} alt=""/>
+                </div>
               </div>
             </div>
             <div className="pop-bottom">
@@ -103,7 +108,31 @@ class ActivityList extends Component {
   }
 
   renderQRCodeCard = () => {
-
+    return <div className="pop-content">
+            <Tabs className="tabs" size="small" defaultActiveKey="1" onChange={()=> {}}>
+              <TabPane tab="活动二维码" key="1">
+                <div className="QR-code">
+                  <img src={IMG_QR} alt=""/>
+                  <div className="QR-text">扫一扫立即参与活动</div>
+                </div>
+                <div className="pop-bottom">
+                  <div className="action-btn">下载二维码</div>
+                  <div className="action-btn">设置带参数的二维码</div>
+                </div>
+              </TabPane>
+              <TabPane tab="签到二维码" key="2">
+                <div className="QR-code">
+                  <img src={IMG_QR} alt=""/>
+                  <div className="QR-text">现场扫码进行活动签到</div>
+                </div>
+                <div className="pop-bottom">
+                  <div className="action-btn">下载二维码</div>
+                  <div></div>
+                </div>
+              </TabPane>
+            </Tabs>
+            
+          </div>
   }
 
   render() {
@@ -205,20 +234,40 @@ class ActivityList extends Component {
                   <span>
                    {/* {console.log(text, record, index)} */}
                    {
-                      record.actions.map((item, index) => <Popconfirm
-                                                            overlayClassName="action-pop-card"
-                                                            icon=''
-                                                            placement="left"
-                                                            arrowPointAtCenter={true}
-                                                            autoAdjustOverflow={true}
-                                                            title={this.renderPromotionCard()}
-                                                            // visible={true}
-                                                            key={index}
-                                                          >
-                                                            <div className="table-action">{item}</div>
-                                                          </Popconfirm>
-                      )
-                    }
+                      record.actions.map((item, index) => {
+                        console.log(item)
+                        if (item === '推广') {
+                          return (<Popconfirm
+                            overlayClassName="action-pop-card"
+                            icon=''
+                            placement="left"
+                            arrowPointAtCenter={true}
+                            autoAdjustOverflow={true}
+                            title={this.renderPromotionCard()}
+                            // visible={true}
+                            key={index}
+                          >
+                            <div className="table-action">{item}</div>
+                          </Popconfirm>)
+                        } else if (item === "二维码") {
+                          return (<Popconfirm
+                            overlayClassName="action-pop-card"
+                            icon=''
+                            placement="left"
+                            arrowPointAtCenter={true}
+                            autoAdjustOverflow={true}
+                            title={this.renderQRCodeCard()}
+                            // visible={true}
+                            key={index}
+                          >
+                            <div className="table-action">{item}</div>
+                          </Popconfirm>)
+                        } else {
+                          return (<div className="table-action">{item}</div>);
+                        }
+                      }
+                        
+                    )}
                   </span>
                 )}
               />

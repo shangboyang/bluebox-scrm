@@ -48,6 +48,12 @@ export default class NewActivity extends Component {
                     label="*活动主图"
                   >
                     <a href="javascript:void(0)">添加图片</a>
+                    <div className="text">
+                      固定宽为300xp，不限制高度
+                    </div>
+                    <div className="text">
+                      建议尺寸为300*600xp的jpg/png格式图片，3M以内
+                    </div>
                 </Form.Item>
                 <Form.Item
                   label={`页面底色`}
