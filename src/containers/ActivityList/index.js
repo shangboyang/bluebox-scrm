@@ -222,13 +222,13 @@ class ActivityList extends Component {
               </Form.Item>
             </Form>
             <Table className="list-table" dataSource={tableData} style={{fontSize: '12px'}} pagination={paginationParams}>
-              <Column title="活动ID" dataIndex="id" key="id" />
-              <Column title="活动名称" dataIndex="name" key="name" />
-              <Column title="活动类型" dataIndex="type" key="type"/>
-              <Column title="活动分类" dataIndex="classify" key="classify" />
-              <Column title="活动报名时间" dataIndex="registerTime" key="registerTime" />
-              <Column title="活动时间" dataIndex="activityTime" key="activityTime" />
-              <Column title="状态" dataIndex="status" key="status" />
+              <Column title="活动ID" width="70px" dataIndex="id" key="id" />
+              <Column title="活动名称" width="120px"  dataIndex="name" key="name" />
+              <Column title="活动类型" width="80px"  dataIndex="type" key="type"/>
+              <Column title="活动分类" width="80px" dataIndex="classify" key="classify" />
+              <Column title="活动报名时间" width="150px" dataIndex="registerTime" key="registerTime" />
+              <Column title="活动时间" width="150px" dataIndex="activityTime" key="activityTime" />
+              <Column title="状态" width="70px" dataIndex="status" key="status" />
               <Column title="操作" key="actions" 
                 render={(text, record, index) => (
                   <span>
